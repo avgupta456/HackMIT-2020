@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, Response
 from flask_cors import CORS
 
 import os
@@ -7,6 +7,7 @@ from dotenv import load_dotenv, find_dotenv
 from scripts.gpt import GPT, set_openai_key
 
 from scripts.speech2text import transcribe_file
+from scripts.text2speech import create_audio
 
 
 app = Flask(__name__)
@@ -43,7 +44,10 @@ def test():
     print(text)
     GPT_test.set_premise("My conversation with " + name)
     GPT_test.set_output_prefix(name + ":")
-    return GPT_test.get_top_reply(text + " Explain.")
+    output = GPT_test.get_top_reply(text + " Explain.")
+    audio_content = create_audio(output)
+    print("Done")
+    return Response(audio_content, mimetype="audio/mpeg")
 
 
 if __name__ == "__main__":
