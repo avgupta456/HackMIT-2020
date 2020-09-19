@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function Person() {
+export default function Directory() {
   const classes = useStyles();
 
   return (

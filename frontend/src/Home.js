@@ -13,7 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -75,7 +75,7 @@ function CreateCard(cardNum) {
     const classes = useStyles();
     const person_data = GetPersonData(cardNum);
     return (<Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea component={Link} to="/person">
             <CardMedia
             className={classes.cardMedia}
             image={person_data[1]}
@@ -107,13 +107,13 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
+      {/* <AppBar color="secondary" position="relative">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
             Project Name
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <main>
         {/* Hero unit */}
         {/* <div className={classes.heroContent}>
