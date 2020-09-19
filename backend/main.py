@@ -25,7 +25,7 @@ def hello_world():
 GPT_test = GPT(
     engine="davinci",
     temperature=0.5,
-    max_tokens=200,
+    max_tokens=1000,
     input_prefix="Me:",
     input_suffix="\n\n",
     output_suffix="\n\n",
@@ -36,10 +36,14 @@ GPT_test = GPT(
 def test():
     content = request.files["audio"].stream.read()
     text = transcribe_file(content)
+
+    name = request.args.get("name").replace("-", " ")
+    print(name)
+
     print(text)
-    GPT_test.set_premise("My conversation with Steve Jobs")
-    GPT_test.set_output_prefix("Steve Jobs:")
-    return GPT_test.get_top_reply(text)
+    GPT_test.set_premise("My conversation with " + name)
+    GPT_test.set_output_prefix(name + ":")
+    return GPT_test.get_top_reply(text + " Explain.")
 
 
 if __name__ == "__main__":

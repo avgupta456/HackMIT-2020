@@ -8,6 +8,9 @@ import "./App.css";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
+const backend = "http://localhost:5000/test";
+const name = "Steve-Jobs";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +43,7 @@ class App extends React.Component {
         const formData = new FormData();
         formData.append("audio", blob);
         axios
-          .post("http://localhost:5000/test", formData)
+          .post(backend + "?name=" + name, formData)
           .then(function (response) {
             console.log(response);
           })

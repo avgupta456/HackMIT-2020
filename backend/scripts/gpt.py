@@ -53,7 +53,6 @@ class GPT:
         input_suffix="\n",
         output_prefix="output: ",
         output_suffix="\n\n",
-        append_output_prefix_to_query=False,
         premise_prefix="",
         premise_suffix="\n\n",
     ):
@@ -66,7 +65,6 @@ class GPT:
         self.input_suffix = input_suffix
         self.output_prefix = output_prefix
         self.output_suffix = output_suffix
-        self.append_output_prefix_to_query = append_output_prefix_to_query
         self.premise_prefix = premise_prefix
         self.premise_suffix = premise_suffix
         self.stop = (output_suffix + input_prefix).strip()
@@ -135,9 +133,7 @@ class GPT:
         premise = self.premise
         q = self.premise_prefix + premise + self.premise_suffix if premise else ""
         q = q + self.get_prime_text() + self.input_prefix + prompt + self.input_suffix
-        if self.append_output_prefix_to_query:
-            q = q + self.output_prefix
-
+        q = q + self.output_prefix
         return q
 
     def submit_request(self, prompt):
