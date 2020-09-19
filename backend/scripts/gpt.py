@@ -143,6 +143,7 @@ class GPT:
             prompt=self.craft_query(prompt),
             max_tokens=self.get_max_tokens(),
             temperature=self.get_temperature(),
+            presence_penalty=0.5,
             top_p=1,
             n=1,
             stream=False,
