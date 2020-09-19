@@ -8,7 +8,8 @@ import "./App.css";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
-const backend = "http://localhost:5000/get_options";
+// const backend = "https://hackmit-2020-290013.ue.r.appspot.com/get_response";
+const backend = "http://localhost:5000/get_response";
 const name = ""; // "Steve-Jobs";
 
 class App extends React.Component {
