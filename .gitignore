@@ -1,4 +1,4 @@
-frontend/node_modules
-backend/root-sk.json
-backend/.env
+node_modules
+root-sk.json
+.env
 __pycache__
