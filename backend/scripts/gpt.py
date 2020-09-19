@@ -71,6 +71,20 @@ class GPT:
         self.premise_suffix = premise_suffix
         self.stop = (output_suffix + input_prefix).strip()
 
+    def set_input_prefix(self, input_prefix):
+        self.input_prefix = input_prefix
+        self.stop = (self.output_suffix + self.input_prefix).strip()
+
+    def set_input_suffix(self, input_suffix):
+        self.input_suffix = input_suffix
+
+    def set_output_prefix(self, output_prefix):
+        self.output_prefix = output_prefix
+
+    def set_output_suffix(self, output_suffix):
+        self.output_suffix = output_suffix
+        self.stop = (self.output_suffix + self.input_prefix).strip()
+
     def set_premise(self, premise):
         """Sets a premise on the object. """
         self.premise = premise

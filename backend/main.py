@@ -4,8 +4,7 @@ from flask_cors import CORS
 import os
 from dotenv import load_dotenv, find_dotenv
 
-import openai
-from scripts.gpt import GPT, Example, set_openai_key
+from scripts.gpt import GPT, set_openai_key
 
 from scripts.speech2text import transcribe_file
 
@@ -23,15 +22,24 @@ def hello_world():
     return "Hello, World!"
 
 
-GPT_test = GPT(engine="ada", temperature=0.5, max_tokens=200)
+GPT_test = GPT(
+    engine="davinci",
+    temperature=0.5,
+    max_tokens=200,
+    input_prefix="Me:",
+    input_suffix="\n\n",
+    output_suffix="\n\n",
+)
 
 
 @app.route("/test", methods=["GET", "POST"])
 def test():
     content = request.files["audio"].stream.read()
-    print(transcribe_file(content))
-    GPT_test.set_premise("Could you summarize this in an easy to understand manner?")
-    return GPT_test.get_top_reply("What is general relativity")
+    text = transcribe_file(content)
+    print(text)
+    GPT_test.set_premise("My conversation with Steve Jobs")
+    GPT_test.set_output_prefix("Steve Jobs:")
+    return GPT_test.get_top_reply(text)
 
 
 if __name__ == "__main__":
