@@ -8,8 +8,8 @@ import "./App.css";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
-const backend = "http://localhost:5000/test";
-const name = "Steve-Jobs";
+const backend = "http://localhost:5000/get_options";
+const name = ""; // "Steve-Jobs";
 
 class App extends React.Component {
   constructor(props) {
