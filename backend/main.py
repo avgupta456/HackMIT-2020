@@ -31,6 +31,18 @@ GPT_response = GPT(
     input_suffix="\n\n",
     output_suffix="\n\n",
 )
+examples_response = [
+    [
+        "What is your favorite childhood memory?",
+        "I have a lot of favorite childhood memories. One that stands out was when my parents rented a house in Woodside, California, for a summer. It was a 2-story house and I would ride my bicycle down the hill, through the woods and along a creek that led to a swimming hole. I spent hours exploring that creek and it remains very vivid in my mind.",
+    ],
+    [
+        "Do you follow sports?",
+        "I do follow sports. I was a huge fan of the 49ers when I was younger and I still follow them. I also followed the Stanford football team for a while.",
+    ],
+]
+for example in examples_response:
+    GPT_response.add_example(Example(example[0], example[1]))
 
 
 def get_advice(person, question):
