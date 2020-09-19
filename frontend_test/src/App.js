@@ -8,6 +8,9 @@ import "./App.css";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
+const backend = "http://localhost:5000/test";
+const name = "Steve-Jobs";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,25 +33,21 @@ class App extends React.Component {
     }
   };
 
-  stop = () => {
-    Mp3Recorder.stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        console.log(blob);
-        const blobURL = URL.createObjectURL(blob);
-        this.setState({ blobURL, isRecording: false });
-        const formData = new FormData();
-        formData.append("audio", blob);
-        axios
-          .post("http://localhost:5000/test", formData)
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      })
-      .catch((e) => console.log(e));
+  stop = async () => {
+    const [buffer, blob] = await Mp3Recorder.stop().getMp3();
+    console.log(blob);
+
+    const formData = new FormData();
+    formData.append("audio", blob);
+    const response = await axios.post(backend + "?name=" + name, formData, {
+      responseType: "blob",
+    });
+
+    console.log(response);
+    const blobURL = URL.createObjectURL(response.data);
+    console.log(blobURL);
+
+    this.setState({ blobURL, isRecording: false });
   };
 
   componentDidMount() {
