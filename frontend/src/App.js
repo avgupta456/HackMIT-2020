@@ -1,6 +1,10 @@
 import React from "react";
-import "./App.css";
+
+import axios from "axios";
+import FormData from "form-data";
 import MicRecorder from "mic-recorder-to-mp3";
+
+import "./App.css";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -33,7 +37,16 @@ class App extends React.Component {
         console.log(blob);
         const blobURL = URL.createObjectURL(blob);
         this.setState({ blobURL, isRecording: false });
-        console.log(blobURL);
+        const formData = new FormData();
+        formData.append("audio", blob);
+        axios
+          .post("http://localhost:5000/test", formData)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       })
       .catch((e) => console.log(e));
   };
