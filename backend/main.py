@@ -77,6 +77,14 @@ def get_text():
         return get_options(question)
 
 
+@app.route("/get_audio", methods=["GET", "POST"])
+def get_audio():
+    text = request.args.get("text").replace("-", " ")
+    print(text)
+    audio_content = create_audio(text)
+    return Response(audio_content, mimetype="audio/mpeg")
+
+
 @app.route("/get_response", methods=["GET", "POST"])
 def response():
     content = request.files["audio"].stream.read()
@@ -85,9 +93,7 @@ def response():
     name = request.args.get("name").replace("-", " ")
     print(name)
     output = get_advice(name, text)
-
-    audio_content = create_audio(output)
-    return Response(audio_content, mimetype="audio/mpeg")
+    return output
 
 
 GPT_topic = GPT(engine="davinci", temperature=0.5, max_tokens=100)
