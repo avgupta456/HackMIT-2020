@@ -40,11 +40,6 @@ examples_response = [
          and along a creek that led to a swimming hole. I spent hours exploring that
          creek and it remains very vivid in my mind.""",
     ],
-    [
-        "Do you follow sports?",
-        """I do follow sports. I was a huge fan of the 49ers when I was younger and 
-        I still follow them. I also followed the Stanford football team for a while.""",
-    ],
 ]
 for example in examples_response:
     GPT_response.add_example(Example(example[0], example[1]))
@@ -69,8 +64,8 @@ def get_options(question):
 
 @app.route("/get_text", methods=["GET", "POST"])
 def get_text():
-    question = request.args.get("question").replace("-", " ")
-    name = request.args.get("name").replace("-", " ")
+    question = request.args.get("question")
+    name = request.args.get("name")
     if name:
         return get_advice(name, question)
     else:
@@ -79,7 +74,7 @@ def get_text():
 
 @app.route("/get_audio", methods=["GET", "POST"])
 def get_audio():
-    text = request.args.get("text").replace("-", " ")
+    text = request.args.get("text")
     print(text)
     audio_content = create_audio(text)
     return Response(audio_content, mimetype="audio/mpeg")
@@ -90,10 +85,10 @@ def response():
     content = request.files["audio"].stream.read()
     text = transcribe_file(content)
 
-    name = request.args.get("name").replace("-", " ")
+    name = request.args.get("name")
     print(name)
     output = get_advice(name, text)
-    return output
+    return {"input": text, "output": output}
 
 
 GPT_topic = GPT(engine="davinci", temperature=0.5, max_tokens=100)
