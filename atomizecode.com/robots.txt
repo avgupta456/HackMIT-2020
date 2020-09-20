@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://atomizecode.com/sitemap.xml
-Host: https://atomizecode.com
