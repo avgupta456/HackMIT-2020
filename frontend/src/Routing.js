@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Home from "./Home.js";
 import Person from "./Person.js";
-import Directory from "./Directory.js";
+import Demo from "./Demo.js";
 
 import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 export const HomeRoute = "/";
 export const PersonRoute = "/person/:person";
-export const DirectoryRoute = "/directory";
+export const DemoRoute = "/demo";
 export const RandomRoute = "/random";
 
 const theme = createMuiTheme({
@@ -25,11 +25,15 @@ const theme = createMuiTheme({
 class Routing extends React.Component {
   getPerson = () => {
     const names = [
-      "elon_musk",
       "bill_gates",
       "oprah_winfrey",
       "donald_trump",
+      "elon_musk",
       "sheryl_sandburg",
+      "michael_jordan",
+      "richard_feynman",
+      "nelson_mandela",
+      "steve_jobs",
     ];
 
     return names[Math.floor(Math.random() * names.length)];
@@ -46,19 +50,19 @@ class Routing extends React.Component {
           >
             <Tabs onChange={this.handleChange}>
               <Tab label='Home' component={Link} to={HomeRoute} />
-              <Tab label='Directory' component={Link} to={DirectoryRoute} />
               <Tab label='Random Chat' component={Link} to={RandomRoute} />
+              <Tab label='Advanced Demo' component={Link} to={DemoRoute} />
             </Tabs>
           </AppBar>
         </MuiThemeProvider>
         <Switch>
           <Route path={HomeRoute} exact component={Home} />
           <Route path={PersonRoute} component={Person} />
-          <Route path={DirectoryRoute} component={Directory} />
           <Route
             path={RandomRoute}
             render={() => <Person person={this.getPerson()} />}
           />
+          <Route path={DemoRoute} component={Demo} />
         </Switch>
       </React.Fragment>
     );
