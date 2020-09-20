@@ -11,8 +11,8 @@ import MicRecorder from "mic-recorder-to-mp3";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
-// const backend = "https://hackmit-2020-290013.ue.r.appspot.com";
-const backend = "http://localhost:5000";
+const backend = "https://hackmit-2020-290013.ue.r.appspot.com";
+// const backend = "http://localhost:5000";
 
 const useStyles = makeStyles((theme) => ({
   icon: {

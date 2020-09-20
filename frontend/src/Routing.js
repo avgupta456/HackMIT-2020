@@ -9,11 +9,7 @@ import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import {
-  useTheme,
-  createMuiTheme,
-  MuiThemeProvider,
-} from "@material-ui/core/styles";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 
 export const HomeRoute = "/";
 export const PersonRoute = "/person/:person";
