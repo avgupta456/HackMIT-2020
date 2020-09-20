@@ -12,11 +12,14 @@
     "axios": "^0.20.0",
     "form-data": "^3.0.0",
     "mic-recorder-to-mp3": "^2.2.2",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-transition-group": "^4.4.1",
+    "react-typist": "^2.0.5",
+    "react-typist-loop": "0.0.5",
     "styletron-react": "^5.2.7"
   },
   "scripts": {
