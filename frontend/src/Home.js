@@ -34,13 +34,13 @@ const useStyles = makeStyles((theme) => ({
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(8, 0, 0),
   },
   heroButtons: {
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -64,10 +64,31 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function GetPersonData(cardNum) {
   if (cardNum == 1) {
-    return ["Bill Gates", "/images/bill_gates.jpg", "Description for bill"]
+    return ["Bill Gates", "/images/bill_gates.jpg", ""]
+  }
+  else if (cardNum == 2) {
+    return ["Oprah Winfrey", "/images/oprah_winfrey.jpg", ""]
+  }
+  else if (cardNum == 3) {
+    return ["Donald Trump", "/images/donald_trump.jpg", ""]
+  }
+  else if (cardNum == 4) {
+    return ["Elon Musk", "/images/elon_musk.jpg", ""]
+  }
+  else if (cardNum == 5) {
+    return ["Sheryl Sandberg", "/images/sheryl_sandberg.jpg", ""]
+  }
+  else if (cardNum == 6) {
+    return ["Michael Jordan", "/images/michael_jordan.jpg", ""]
+  }
+  else if (cardNum == 7) {
+    return ["Richard Feynman", "/images/richard_feynman.jpg", ""]
+  }
+  else if (cardNum == 8) {
+    return ["Nelson Mandela", "/images/nelson_mandela.jpg", ""]
   }
   else {
-    return ["Elon Musk", "/images/elon_musk.jpg", "Description for elon"]
+    return ["Steve Jobs", "/images/steve_jobs.jpg", ""]
   }
 }
 
@@ -107,41 +128,18 @@ export default function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
-      {/* <AppBar color="secondary" position="relative">
-        <Toolbar>
-          <Typography variant="h6" color="inherit" noWrap>
-            Project Name
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
       <main>
         {/* Hero unit */}
-        {/* <div className={classes.heroContent}>
+        {<div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              Project Name
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              Ask a question to...
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
-        </div> */}
+        </div> }
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -156,7 +154,6 @@ export default function Home() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
           Something here to give the footer a purpose!
