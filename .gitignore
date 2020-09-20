@@ -3,3 +3,4 @@ root-sk.json
 .env
 __pycache__
 .vscode/settings.json
+.firebase
