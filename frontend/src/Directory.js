@@ -18,9 +18,9 @@ import Paper from "@material-ui/core/Paper";
 
 function Copyright() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
+    <Typography variant='body2' color='textSecondary' align='center'>
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color='inherit' href='https://material-ui.com/'>
         Your Website
       </Link>{" "}
       {new Date().getFullYear()}
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
 var personStyle = {
   display: "flex",
   alignItems: "center",
-  paddingBottom: "30px"
+  paddingBottom: "30px",
 };
 
 export default function Directory() {
@@ -84,100 +84,93 @@ export default function Directory() {
     <React.Fragment>
       <main>
         <Grid style={{ padding: "100px" }} container spacing={3}>
-          <Grid item xs={4} >
-            <Paper className={classes.paper} style={{paddingLeft: "40px"}}>
+          <Grid item xs={4}>
+            <Paper className={classes.paper} style={{ paddingLeft: "40px" }}>
               <div style={{ textAlign: "left" }}>
                 <h2>Business</h2>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
-                
-                
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={4} >
-            <Paper className={classes.paper} style={{paddingLeft: "40px"}}>
+          <Grid item xs={4}>
+            <Paper className={classes.paper} style={{ paddingLeft: "40px" }}>
               <div style={{ textAlign: "left" }}>
                 <h2>Technology</h2>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
-                
-                
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={4} >
-            <Paper className={classes.paper} style={{paddingLeft: "40px"}}>
+          <Grid item xs={4}>
+            <Paper className={classes.paper} style={{ paddingLeft: "40px" }}>
               <div style={{ textAlign: "left" }}>
                 <h2>Science</h2>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
                 <div style={personStyle}>
                   <img
-                    alt="Elon Musk"
-                    src="/images/elon_musk.jpg"
-                    width="25%"
+                    alt='Elon Musk'
+                    src='/images/elon_musk.jpg'
+                    width='25%'
                     style={{ borderRadius: "50%" }}
                   />
                   <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
                 </div>
-                
-                
               </div>
             </Paper>
           </Grid>
-        
         </Grid>
       </main>
 
       <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
+        <Typography variant='h6' align='center' gutterBottom>
           Footer
         </Typography>
         <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
+          variant='subtitle1'
+          align='center'
+          color='textSecondary'
+          component='p'
         >
           Something here to give the footer a purpose!
         </Typography>

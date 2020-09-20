@@ -3,7 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
-import { CardActionArea } from "@material-ui/core";
+import { CardActionArea, Input } from "@material-ui/core";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -25,7 +25,7 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 // const backend = "https://hackmit-2020-290013.ue.r.appspot.com";
 const backend = "http://localhost:5000";
-const name = "William-Shakespeare";
+const name = "William Shakespeare";
 
 function Copyright() {
   return (
@@ -95,10 +95,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Person() {
   const classes = useStyles();
-  const [text, setText] = useState("");
+  const [transcript, setTranscript] = useState([]);
   const [blobUrl, setBlobUrl] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
+
+  const addToTranscript = (text) => {
+    let newTranscript = transcript;
+    newTranscript.push(text);
+    setTranscript(newTranscript);
+  };
 
   const start = () => {
     if (isBlocked) {
@@ -119,15 +125,15 @@ export default function Person() {
     const formData = new FormData();
     formData.append("audio", blob);
     let url = backend + "/get_response?name=" + name;
-    console.log(url);
     const text = await axios.post(url, formData);
     console.log(text);
-    url = backend + "/get_audio?text=" + text["data"].replace(" ", "-");
+    const { input, output } = text["data"];
+    addToTranscript("Me: " + input);
+    addToTranscript(name + ": " + output);
+    url = backend + "/get_audio?text=" + output;
     const response = await axios.post(url, formData, { responseType: "blob" });
     console.log(response);
     const blobURL = URL.createObjectURL(response.data);
-    console.log(blobURL);
-    setText(text);
     setBlobUrl(blobURL);
     setIsRecording(false);
   };
@@ -181,7 +187,7 @@ export default function Person() {
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <h2>Transcript</h2>
+              <h2>Ask a Question</h2>
               <button onClick={() => toggle()}>
                 <img
                   alt='Mic'
@@ -191,40 +197,11 @@ export default function Person() {
                 />
               </button>
               <audio src={blobUrl} controls='controls' />
+              <h2>Transcript</h2>
               <div style={{ textAlign: "left" }}>
-                <p>
-                  Elon Musk: Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Cras pretium hendrerit mattis. Cras vulputate libero in
-                  dapibus porta. Cras eget dignissim tellus. Duis augue justo,
-                  condimentum id scelerisque ultrices, auctor vel diam. Donec
-                  sed elit sed lectus tempor ultrices. Aliquam a enim id erat
-                  varius vestibulum non viverra nibh.{" "}
-                </p>
-                <p>
-                  Me: Integer placerat libero malesuada, consequat neque id,
-                  eleifend leo. Proin eu egestas lacus. Fusce ullamcorper dui
-                  eget ultrices bibendum. Aenean eu turpis commodo, dignissim
-                  dolor eu, eleifend mauris. Cras dictum erat vel posuere
-                  finibus. Aenean quis congue augue. Sed pharetra sodales
-                  pharetra.{" "}
-                </p>
-
-                <p>
-                  Elon Musk: Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Cras pretium hendrerit mattis. Cras vulputate libero in
-                  dapibus porta. Cras eget dignissim tellus. Duis augue justo,
-                  condimentum id scelerisque ultrices, auctor vel diam. Donec
-                  sed elit sed lectus tempor ultrices. Aliquam a enim id erat
-                  varius vestibulum non viverra nibh.{" "}
-                </p>
-                <p>
-                  Me: Integer placerat libero malesuada, consequat neque id,
-                  eleifend leo. Proin eu egestas lacus. Fusce ullamcorper dui
-                  eget ultrices bibendum. Aenean eu turpis commodo, dignissim
-                  dolor eu, eleifend mauris. Cras dictum erat vel posuere
-                  finibus. Aenean quis congue augue. Sed pharetra sodales
-                  pharetra.{" "}
-                </p>
+                {transcript.map((text, index) => (
+                  <p key={index}>{text}</p>
+                ))}
               </div>
             </Paper>
           </Grid>
