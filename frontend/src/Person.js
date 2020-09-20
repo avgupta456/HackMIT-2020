@@ -96,7 +96,7 @@ export default function Person() {
         <Grid item xs={6}>
           <Paper className={classes.paper}>
             
-          <img alt="Elon Musk" src="/images/elon_musk.jpg" />
+          <img alt="Elon Musk" src="/images/elon_musk.jpg" style={{borderRadius: "5%"}}/>
             <h2>Elon Musk</h2>
             <p>Engineer, Entrepreneur, Inventor.</p>
             <div style={{textAlign: 'left'}} >
