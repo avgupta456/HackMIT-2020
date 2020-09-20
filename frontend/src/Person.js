@@ -88,6 +88,10 @@ export default function Person() {
   const [isRecording, setIsRecording] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
 
+  const [haveDetails, setHaveDetails] = useState(false);
+  const [bio, setBio] = useState("");
+  const [three, setThree] = useState("");
+
   let { person } = useParams();
   let name = person.replace("_", " ");
   name = name.replace(/\w\S*/g, function (txt) {
@@ -98,6 +102,27 @@ export default function Person() {
     let newTranscript = transcript;
     newTranscript.push(text);
     setTranscript(newTranscript);
+  };
+
+  const getDetails = async () => {
+    setHaveDetails(true);
+    console.log({ three, bio });
+    if (three === "") {
+      let url =
+        backend +
+        "/get_text?name=" +
+        name +
+        "&question=Describe%20yourself%20in%20exactly%20three%20words";
+      let text = await axios.post(url);
+      setThree(text["data"]);
+    }
+
+    if (bio === "") {
+      let url =
+        backend + "/get_text?name=" + name + "&question=Describe%20yourself";
+      let text = await axios.post(url);
+      setBio(text["data"]);
+    }
   };
 
   const start = () => {
@@ -152,6 +177,9 @@ export default function Person() {
         setIsBlocked(true);
       }
     );
+    if (haveDetails === false) {
+      getDetails();
+    }
   });
 
   return (
@@ -165,17 +193,12 @@ export default function Person() {
               <img
                 alt={name}
                 src={"/images/" + person + ".jpg"}
-                style={{ borderRadius: "5%" }}
+                style={{ borderRadius: "5%", width: "100%" }}
               />
               <h2>{name}</h2>
-              <p>Engineer, Entrepreneur, Inventor.</p>
+              <p>{three}</p>
               <div style={{ textAlign: "left" }}>
-                <p>
-                  Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Cras pretium hendrerit mattis. Cras vulputate libero in
-                  dapibus porta. Cras eget dignissim tellus. Duis augue justo,
-                  condimentum id scelerisque ultrices, auctor vel diam.{" "}
-                </p>
+                <p> {bio} </p>
               </div>
             </Paper>
           </Grid>
