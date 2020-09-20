@@ -54,6 +54,7 @@ class Routing extends React.Component {
                         onChange={this.handleChange}
                         >
                     <Tab label="Home" component={Link} to={HomeRoute} />
+                    <Tab label="Person" component={Link} to={PersonRoute} />
                     <Tab label="Directory" component={Link} to={DirectoryRoute} />
                     <Tab label="Random Chat" component={Link} to={RandomRoute} />
 
