@@ -114,7 +114,7 @@ export default function Directory() {
           <Grid item xs={4} >
             <Paper className={classes.paper} style={{paddingLeft: "40px"}}>
               <div style={{ textAlign: "left" }}>
-                <h2>Business</h2>
+                <h2>Technology</h2>
                 <div style={personStyle}>
                   <img
                     alt="Elon Musk"
@@ -141,7 +141,7 @@ export default function Directory() {
           <Grid item xs={4} >
             <Paper className={classes.paper} style={{paddingLeft: "40px"}}>
               <div style={{ textAlign: "left" }}>
-                <h2>Business</h2>
+                <h2>Science</h2>
                 <div style={personStyle}>
                   <img
                     alt="Elon Musk"
