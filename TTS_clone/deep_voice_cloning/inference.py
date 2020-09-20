@@ -69,7 +69,7 @@ if __name__ == '__main__':
         ## Generating the spectrogram
 
         #get text
-        data = " I think the toughest period of my life was when I was trying to get Tesla started. We were taking on the entire auto industry and I was funding the company myself. It was difficult."
+        data = "I think it was the combination of exploring in a place that was very isolated, yet felt safe. It was a place I could go and be alone, but I knew I was going to be okay because there were people close by. I think it was the first time I felt that kind of independence, and it’s something I’ve been striving for ever since."
         start = 0
         words = 20
         stop = words
@@ -114,14 +114,14 @@ if __name__ == '__main__':
             # Trim excess silences to compensate for gaps in spectrograms
             # generated_wav = encoder.preprocess_wav(generated_wav)
             
-            # try:
-            #     sd.stop()
-            #     sd.play(generated_wav, synthesizer.sample_rate)
-            # except sd.PortAudioError as e:
-            #     print("\nCaught exception: %s" % repr(e))
-            #     print("Continuing without audio playback. Suppress this message with the \"--no_sound\" flag.\n")
-            # except:
-            #     raise
+            try:
+                sd.stop()
+                sd.play(generated_wav, synthesizer.sample_rate)
+            except sd.PortAudioError as e:
+                print("\nCaught exception: %s" % repr(e))
+                print("Continuing without audio playback. Suppress this message with the \"--no_sound\" flag.\n")
+            except:
+                raise
 
             #append to memory
             global_list.append(generated_wav)
