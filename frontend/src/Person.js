@@ -15,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
+import Paper from '@material-ui/core/Paper';
 
 function Copyright() {
   return (
@@ -59,6 +60,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
   // column: {
   //   float: left,
   //   width: '50%',
@@ -80,25 +89,37 @@ export default function Person() {
       <CssBaseline />
 
       <main>
-        <div class="row">
-          <div class="column">
+      <Grid style={{padding: "100px"}} container spacing={3}>
+        
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            
           <img alt="Elon Musk" src="/images/elon_musk.jpg" />
             <h2>Elon Musk</h2>
             <p>Engineer, Entrepreneur, Inventor.</p>
+            <div style={{textAlign: 'left'}} >
             <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium hendrerit mattis. Cras vulputate libero in dapibus porta. Cras eget dignissim tellus. Duis augue justo, condimentum id scelerisque ultrices, auctor vel diam. </p>
-          </div>
-          <div class="column2" style={{borderRadius:"2px"}}>
-            <h2>Transcript</h2>
-            <img alt="Mic" src="/images/mic.png" width="20%" height="auto"/>
+            </div>
+          </Paper>
+          
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
 
+          <h2>Transcript</h2>
+            <img alt="Mic" src="/images/mic.png" width="20%" height="auto"/>
+            <div style={{textAlign: 'left'}} >
             <p>Elon Musk: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium hendrerit mattis. Cras vulputate libero in dapibus porta. Cras eget dignissim tellus. Duis augue justo, condimentum id scelerisque ultrices, auctor vel diam. Donec sed elit sed lectus tempor ultrices. Aliquam a enim id erat varius vestibulum non viverra nibh. </p>
             <p>Me: Integer placerat libero malesuada, consequat neque id, eleifend leo. Proin eu egestas lacus. Fusce ullamcorper dui eget ultrices bibendum. Aenean eu turpis commodo, dignissim dolor eu, eleifend mauris. Cras dictum erat vel posuere finibus. Aenean quis congue augue. Sed pharetra sodales pharetra. </p>
             
             <p>Elon Musk: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium hendrerit mattis. Cras vulputate libero in dapibus porta. Cras eget dignissim tellus. Duis augue justo, condimentum id scelerisque ultrices, auctor vel diam. Donec sed elit sed lectus tempor ultrices. Aliquam a enim id erat varius vestibulum non viverra nibh. </p>
             <p>Me: Integer placerat libero malesuada, consequat neque id, eleifend leo. Proin eu egestas lacus. Fusce ullamcorper dui eget ultrices bibendum. Aenean eu turpis commodo, dignissim dolor eu, eleifend mauris. Cras dictum erat vel posuere finibus. Aenean quis congue augue. Sed pharetra sodales pharetra. </p>
-            
-          </div>
-        </div>
+            </div>
+          </Paper>
+        </Grid>
+        
+      </Grid>
+
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
