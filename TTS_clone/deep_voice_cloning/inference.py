@@ -69,7 +69,7 @@ if __name__ == '__main__':
         ## Generating the spectrogram
 
         #get text
-        data = "Neural coding is a neuroscience field concerned with characterising the hypothetical relationship between the stimulus and the individual or ensemble neuronal responses and the relationship among the electrical activity of the neurons in the ensemble. Based on the theory that sensory and other information is represented in the brain by networks of neurons, it is thought that neurons can encode both digital and analog information"
+        data = "I think it was the combination of exploring in a place that was very isolated, yet felt safe. It was a place I could go and be alone, but I knew I was going to be okay because there were people close by. I think it was the first time I felt that kind of independence, and it’s something I’ve been striving for ever since."
         start = 0
         words = 20
         stop = words
@@ -84,6 +84,7 @@ if __name__ == '__main__':
 
         global_list = [] #store all the outputs sequentially as it passes
 
+        print("\nsequence size:", len(text), "\n")
         for i, txt in enumerate(text):
             
             # text = "i can't seem to make it output the first thread and then keep the reamaining going" #sentence
@@ -113,14 +114,14 @@ if __name__ == '__main__':
             # Trim excess silences to compensate for gaps in spectrograms
             # generated_wav = encoder.preprocess_wav(generated_wav)
             
-            # try:
-            #     sd.stop()
-            #     sd.play(generated_wav, synthesizer.sample_rate)
-            # except sd.PortAudioError as e:
-            #     print("\nCaught exception: %s" % repr(e))
-            #     print("Continuing without audio playback. Suppress this message with the \"--no_sound\" flag.\n")
-            # except:
-            #     raise
+            try:
+                sd.stop()
+                sd.play(generated_wav, synthesizer.sample_rate)
+            except sd.PortAudioError as e:
+                print("\nCaught exception: %s" % repr(e))
+                print("Continuing without audio playback. Suppress this message with the \"--no_sound\" flag.\n")
+            except:
+                raise
 
             #append to memory
             global_list.append(generated_wav)
