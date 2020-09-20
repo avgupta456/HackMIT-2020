@@ -30,7 +30,7 @@ export default function Home() {
         <hr />
         <br />
         <br />
-        <video src={url3} controls='controls' />
+        <video src={url3} controls='controls' style={{ width: "80%" }} />
       </Paper>
     </React.Fragment>
   );
