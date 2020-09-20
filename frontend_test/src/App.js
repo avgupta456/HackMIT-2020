@@ -10,7 +10,7 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 // const backend = "https://hackmit-2020-290013.ue.r.appspot.com/get_response";
 const backend = "http://localhost:5000/get_response";
-const name = ""; // "Steve-Jobs";
+const name = "William-Shakespeare";
 
 class App extends React.Component {
   constructor(props) {
@@ -40,7 +40,9 @@ class App extends React.Component {
 
     const formData = new FormData();
     formData.append("audio", blob);
-    const response = await axios.post(backend + "?name=" + name, formData, {
+    const url = backend + "?name=" + name;
+    console.log(url);
+    const response = await axios.post(url, formData, {
       responseType: "blob",
     });
 
