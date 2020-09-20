@@ -208,6 +208,8 @@ export default function Person(props) {
                   height='auto'
                 />
               </button>
+              <br />
+              <br />
               <audio src={blobUrl} controls='controls' />
               <h2>Transcript</h2>
               <div style={{ textAlign: "left" }}>
