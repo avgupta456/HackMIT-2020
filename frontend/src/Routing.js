@@ -17,7 +17,7 @@ import {
 } from "@material-ui/core/styles";
 
 export const HomeRoute = "/";
-export const PersonRoute = "/person";
+export const PersonRoute = "/person/:person";
 export const DirectoryRoute = "/directory";
 export const RandomRoute = "/random";
 

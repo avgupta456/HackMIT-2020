@@ -1,20 +1,9 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
-import Card from "@material-ui/core/Card";
-import { CardActionArea, Input } from "@material-ui/core";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 
 import axios from "axios";
@@ -25,7 +14,6 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 // const backend = "https://hackmit-2020-290013.ue.r.appspot.com";
 const backend = "http://localhost:5000";
-const name = "William Shakespeare";
 
 function Copyright() {
   return (
@@ -100,6 +88,12 @@ export default function Person() {
   const [isRecording, setIsRecording] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
 
+  let { person } = useParams();
+  let name = person.replace("_", " ");
+  name = name.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+
   const addToTranscript = (text) => {
     let newTranscript = transcript;
     newTranscript.push(text);
@@ -169,11 +163,11 @@ export default function Person() {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <img
-                alt='Elon Musk'
-                src='/images/elon_musk.jpg'
+                alt={name}
+                src={"/images/" + person + ".jpg"}
                 style={{ borderRadius: "5%" }}
               />
-              <h2>Elon Musk</h2>
+              <h2>{name}</h2>
               <p>Engineer, Entrepreneur, Inventor.</p>
               <div style={{ textAlign: "left" }}>
                 <p>

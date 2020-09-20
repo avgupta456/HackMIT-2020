@@ -64,23 +64,43 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function GetPersonData(cardNum) {
   if (cardNum == 1) {
-    return ["Bill Gates", "/images/bill_gates.jpg", ""];
+    return ["Bill Gates", "/images/bill_gates.jpg", "", "bill_gates"];
   } else if (cardNum == 2) {
-    return ["Oprah Winfrey", "/images/oprah_winfrey.jpg", ""];
+    return ["Oprah Winfrey", "/images/oprah_winfrey.jpg", "", "oprah_winfrey"];
   } else if (cardNum == 3) {
-    return ["Donald Trump", "/images/donald_trump.jpg", ""];
+    return ["Donald Trump", "/images/donald_trump.jpg", "", "donald_trump"];
   } else if (cardNum == 4) {
-    return ["Elon Musk", "/images/elon_musk.jpg", ""];
+    return ["Elon Musk", "/images/elon_musk.jpg", "", "elon_musk"];
   } else if (cardNum == 5) {
-    return ["Sheryl Sandberg", "/images/sheryl_sandberg.jpg", ""];
+    return [
+      "Sheryl Sandberg",
+      "/images/sheryl_sandberg.jpg",
+      "",
+      "sheryl_sandberg",
+    ];
   } else if (cardNum == 6) {
-    return ["Michael Jordan", "/images/michael_jordan.jpg", ""];
+    return [
+      "Michael Jordan",
+      "/images/michael_jordan.jpg",
+      "",
+      "michael_jordan",
+    ];
   } else if (cardNum == 7) {
-    return ["Richard Feynman", "/images/richard_feynman.jpg", ""];
+    return [
+      "Richard Feynman",
+      "/images/richard_feynman.jpg",
+      "",
+      "richard_feynman",
+    ];
   } else if (cardNum == 8) {
-    return ["Nelson Mandela", "/images/nelson_mandela.jpg", ""];
+    return [
+      "Nelson Mandela",
+      "/images/nelson_mandela.jpg",
+      "",
+      "nelson_mandela",
+    ];
   } else {
-    return ["Steve Jobs", "/images/steve_jobs.jpg", ""];
+    return ["Steve Jobs", "/images/steve_jobs.jpg", "", "steve_jobs"];
   }
 }
 
@@ -89,7 +109,7 @@ function CreateCard(cardNum) {
   const person_data = GetPersonData(cardNum);
   return (
     <Card className={classes.card}>
-      <CardActionArea component={Link} to='/person'>
+      <CardActionArea component={Link} to={"/person/" + person_data[3]}>
         <CardMedia
           className={classes.cardMedia}
           image={person_data[1]}
@@ -104,14 +124,6 @@ function CreateCard(cardNum) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      {/* <CardActions>
-            <Button size="small" color="primary">
-                View
-            </Button>
-            <Button size="small" color="primary">
-                Edit
-            </Button>
-        </CardActions> */}
     </Card>
   );
 }
