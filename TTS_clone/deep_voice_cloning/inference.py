@@ -44,7 +44,7 @@ if __name__ == '__main__':
         # Get the reference audio filepath
         message = "Reference voice: enter an audio filepath of a voice to be cloned (mp3, " \
                     "wav, m4a, flac, ...):\n"
-        in_fpath = Path("samples/elon.wav") #hardcoded for now
+        in_fpath = Path("samples/elon_voice.wav") #hardcoded for now
 
 
         ## Computing the embedding
@@ -144,7 +144,7 @@ if __name__ == '__main__':
         except:
             raise
         # Save it on the disk
-        filename = "demo_output_00.wav"
+        filename = "output/demo_output_00.wav"
         print(combined.dtype)
         sf.write(filename, combined.astype(np.float32), synthesizer.sample_rate)
         print("\nSaved output as %s\n\n" % filename)
