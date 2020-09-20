@@ -67,6 +67,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    borderRadius: "12px",
+    boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
   },
   // column: {
   //   float: left,
@@ -107,7 +109,7 @@ export default function Person() {
           <Paper className={classes.paper}>
 
           <h2>Transcript</h2>
-            <img alt="Mic" src="/images/mic.png" width="20%" height="auto"/>
+            <img alt="Mic" src="/images/mic.png" width="17%" height="auto"/>
             <div style={{textAlign: 'left'}} >
             <p>Elon Musk: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium hendrerit mattis. Cras vulputate libero in dapibus porta. Cras eget dignissim tellus. Duis augue justo, condimentum id scelerisque ultrices, auctor vel diam. Donec sed elit sed lectus tempor ultrices. Aliquam a enim id erat varius vestibulum non viverra nibh. </p>
             <p>Me: Integer placerat libero malesuada, consequat neque id, eleifend leo. Proin eu egestas lacus. Fusce ullamcorper dui eget ultrices bibendum. Aenean eu turpis commodo, dignissim dolor eu, eleifend mauris. Cras dictum erat vel posuere finibus. Aenean quis congue augue. Sed pharetra sodales pharetra. </p>
