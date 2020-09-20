@@ -27,6 +27,18 @@ const theme = createMuiTheme({
 });
 
 class Routing extends React.Component {
+  getPerson = () => {
+    const names = [
+      "elon_musk",
+      "bill_gates",
+      "oprah_winfrey",
+      "donald_trump",
+      "sheryl_sandburg",
+    ];
+
+    return names[Math.floor(Math.random() * names.length)];
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -49,7 +61,7 @@ class Routing extends React.Component {
           <Route path={DirectoryRoute} component={Directory} />
           <Route
             path={RandomRoute}
-            render={() => <Person person='elon_musk' />}
+            render={() => <Person person={this.getPerson()} />}
           />
         </Switch>
       </React.Fragment>
