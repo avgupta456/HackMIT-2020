@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 
 import axios from "axios";
@@ -135,7 +134,7 @@ export default function Person(props) {
 
   const stop = async () => {
     const [buffer, blob] = await Mp3Recorder.stop().getMp3();
-    console.log(blob);
+    console.log({ buffer, blob });
 
     const formData = new FormData();
     formData.append("audio", blob);

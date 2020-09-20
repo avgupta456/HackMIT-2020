@@ -1,32 +1,16 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Button from "@material-ui/core/Button";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
 import Card from "@material-ui/core/Card";
 import { CardActionArea } from "@material-ui/core";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {"Copyright © "}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import Header from "./Header.js";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -63,36 +47,36 @@ const useStyles = makeStyles((theme) => ({
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function GetPersonData(cardNum) {
-  if (cardNum == 1) {
+  if (cardNum === 1) {
     return ["Bill Gates", "/images/bill_gates.jpg", "", "bill_gates"];
-  } else if (cardNum == 2) {
+  } else if (cardNum === 2) {
     return ["Oprah Winfrey", "/images/oprah_winfrey.jpg", "", "oprah_winfrey"];
-  } else if (cardNum == 3) {
+  } else if (cardNum === 3) {
     return ["Donald Trump", "/images/donald_trump.jpg", "", "donald_trump"];
-  } else if (cardNum == 4) {
+  } else if (cardNum === 4) {
     return ["Elon Musk", "/images/elon_musk.jpg", "", "elon_musk"];
-  } else if (cardNum == 5) {
+  } else if (cardNum === 5) {
     return [
       "Sheryl Sandberg",
       "/images/sheryl_sandberg.jpg",
       "",
       "sheryl_sandberg",
     ];
-  } else if (cardNum == 6) {
+  } else if (cardNum === 6) {
     return [
       "Michael Jordan",
       "/images/michael_jordan.jpg",
       "",
       "michael_jordan",
     ];
-  } else if (cardNum == 7) {
+  } else if (cardNum === 7) {
     return [
       "Richard Feynman",
       "/images/richard_feynman.jpg",
       "",
       "richard_feynman",
     ];
-  } else if (cardNum == 8) {
+  } else if (cardNum === 8) {
     return [
       "Nelson Mandela",
       "/images/nelson_mandela.jpg",
@@ -133,32 +117,9 @@ export default function Home() {
 
   return (
     <React.Fragment>
+      <Header />
       <CssBaseline />
       <main>
-        {/* Hero unit */}
-        {
-          <div className={classes.heroContent}>
-            <Container maxWidth='sm'>
-              <Typography
-                component='h1'
-                variant='h2'
-                align='center'
-                color='textPrimary'
-                gutterBottom
-              >
-                Project Name
-              </Typography>
-              <Typography
-                variant='h5'
-                align='center'
-                color='textSecondary'
-                paragraph
-              >
-                Ask a question to...
-              </Typography>
-            </Container>
-          </div>
-        }
         <Container className={classes.cardGrid} maxWidth='md'>
           {/* End hero unit */}
           <Grid container spacing={4}>
@@ -170,20 +131,6 @@ export default function Home() {
           </Grid>
         </Container>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant='h6' align='center' gutterBottom></Typography>
-        <Typography
-          variant='subtitle1'
-          align='center'
-          color='textSecondary'
-          component='p'
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
