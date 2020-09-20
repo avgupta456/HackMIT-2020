@@ -64,21 +64,21 @@ export default function Directory() {
                 <h2>Business</h2>
                 <div style={personStyle}>
                   <img
-                    alt='Elon Musk'
-                    src='/images/elon_musk.jpg'
+                    alt='Steve Jobs'
+                    src='/images/steve_jobs.jpg'
                     width='25%'
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
+                  <h3 style={{ paddingLeft: "20px" }}>Steve Jobs</h3>
                 </div>
                 <div style={personStyle}>
                   <img
-                    alt='Elon Musk'
-                    src='/images/elon_musk.jpg'
+                    alt='Bill Gates'
+                    src='/images/sheryl_sandberg.jpg'
                     width='25%'
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
+                  <h3 style={{ paddingLeft: "20px" }}>Sheryl Sandberg</h3>
                 </div>
               </div>
             </Paper>
@@ -99,11 +99,11 @@ export default function Directory() {
                 <div style={personStyle}>
                   <img
                     alt='Elon Musk'
-                    src='/images/elon_musk.jpg'
+                    src='/images/bill_gates.jpg'
                     width='25%'
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
+                  <h3 style={{ paddingLeft: "20px" }}>Bill Gates</h3>
                 </div>
               </div>
             </Paper>
@@ -111,24 +111,24 @@ export default function Directory() {
           <Grid item xs={4}>
             <Paper className={classes.paper} style={{ paddingLeft: "40px" }}>
               <div style={{ textAlign: "left" }}>
-                <h2>Science</h2>
+                <h2>Public Figure</h2>
                 <div style={personStyle}>
                   <img
                     alt='Elon Musk'
-                    src='/images/elon_musk.jpg'
+                    src='/images/oprah_winfrey.jpg'
                     width='25%'
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
+                  <h3 style={{ paddingLeft: "20px" }}>Oprah Winfrey</h3>
                 </div>
                 <div style={personStyle}>
                   <img
                     alt='Elon Musk'
-                    src='/images/elon_musk.jpg'
+                    src='/images/michael_jordan.jpg'
                     width='25%'
                     style={{ borderRadius: "50%" }}
                   />
-                  <h3 style={{ paddingLeft: "20px" }}>Elon Musk</h3>
+                  <h3 style={{ paddingLeft: "20px" }}>Michael Jordan</h3>
                 </div>
               </div>
             </Paper>
