@@ -31,6 +31,22 @@ export default function Home() {
         <br />
         <br />
         <video src={url3} controls='controls' style={{ width: "80%" }} />
+        <br />
+        <br />
+        <Typography variant='h4'>
+          How does it work?
+        </Typography>
+        <br />
+        <Typography>
+        Voice cloning is done using a set of 3 independent neural networks:
+        <ol>
+          <li>Speaker encoder network - this is primarily used for training a speaker verification task of noisy speech dataset without any transcript from thousands of speakers. This model generates an embedding vector from the speech sample of a target actor.</li>
+          <li>Synthesis network - This is a sequence-to-sequence network based on Tacotron 2 TTS Synthesis model that generates a mel spectrogram from the text based on the target speaker’s embedding generated from Speaker encoder network.</li>
+          <li>Vocoder Network - this is an auto-regressive WaveNet network that converts the mel spectrogram generated from the Synthesis network (frequency domain) into time domain waveform sample.</li>
+        </ol>
+
+        Resources used - <a href="https://github.com/CorentinJ/Real-Time-Voice-Cloning">Voice-Cloning Repository</a> based on the <a href="https://arxiv.org/pdf/1806.04558.pdf">Transfer Learning Verification TTS paper</a>.
+        </Typography>
       </Paper>
     </React.Fragment>
   );
