@@ -74,13 +74,13 @@ if __name__ == '__main__':
         words = 20
         stop = words
 
-        text = data.split(". ")
-        # data = data.split(" ")
-        # while(stop < len(data) and stop > 0):
-        #     stop = start + words - 1 if len(data) > start + words else -1
-        #     chunk = " ".join(data[start:stop])
-        #     start = stop
-        #     text.append(chunk)
+        text = []
+        data = data.split(" ")
+        while(stop < len(data) and stop > 0):
+            stop = start + words - 1 if len(data) > start + words else -1
+            chunk = " ".join(data[start:stop])
+            start = stop
+            text.append(chunk)
 
         global_list = [] #store all the outputs sequentially as it passes
 
