@@ -155,8 +155,18 @@ export default function Person(props) {
   const toggle = () => {
     if (isRecording) {
       stop();
+      document.getElementById("animWave").src = "/images/mic.png";
+      document.getElementById("animWave").width = "100";
+      // document.getElementById("siriWave").style.visibility = "hidden";
     } else {
       start();
+      document.getElementById("animWave").src = "/images/siri.gif";
+      document.getElementById("animWave").width = "300";
+      // var url = "/images/siri.gif";
+
+      // var image = new Image(200, 100);
+      // image.src = url;
+      // document.getElementById("siriWave").appendChild(image);
     }
   };
 
@@ -176,6 +186,14 @@ export default function Person(props) {
       getDetails();
     }
   });
+
+  // function Wave(recording) {
+  //   if (recording) {
+  //     return (
+  //       <img alt="Siri" src="/images/siri.gif" width="17%" height="auto" />
+  //     );
+  //   }
+  // }
 
   return (
     <React.Fragment>
@@ -202,15 +220,17 @@ export default function Person(props) {
               <h2>Ask a Question</h2>
               <button onClick={() => toggle()}>
                 <img
-                  alt='Mic'
-                  src='/images/mic.png'
-                  width='17%'
-                  height='auto'
+                id="animWave"
+                  alt="Mic"
+                  src="/images/mic.png"
+                  width="17%"
+                  height="auto"
                 />
               </button>
+              <div id="siriWave"></div>
               <br />
               <br />
-              <audio src={blobUrl} controls='controls' />
+              <audio src={blobUrl} controls="controls" />
               <h2>Transcript</h2>
               <div style={{ textAlign: "left" }}>
                 {transcript.map((text, index) => (
