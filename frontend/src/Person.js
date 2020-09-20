@@ -15,19 +15,6 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 // const backend = "https://hackmit-2020-290013.ue.r.appspot.com";
 const backend = "http://localhost:5000";
 
-function Copyright() {
-  return (
-    <Typography variant='body2' color='textSecondary' align='center'>
-      {"Copyright © "}
-      <Link color='inherit' href='https://material-ui.com/'>
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -81,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-export default function Person() {
+export default function Person(props) {
   const classes = useStyles();
   const [transcript, setTranscript] = useState([]);
   const [blobUrl, setBlobUrl] = useState("");
@@ -92,7 +79,13 @@ export default function Person() {
   const [bio, setBio] = useState("");
   const [three, setThree] = useState("");
 
-  let { person } = useParams();
+  let person = "";
+  let params = useParams();
+  if (props.person) {
+    person = props.person;
+  } else {
+    person = params["person"];
+  }
   let name = person.replace("_", " ");
   name = name.replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -119,7 +112,10 @@ export default function Person() {
 
     if (bio === "") {
       let url =
-        backend + "/get_text?name=" + name + "&question=Describe%20yourself";
+        backend +
+        "/get_text?name=" +
+        name +
+        "&question=Tell%20me%20about%20yourself";
       let text = await axios.post(url);
       setBio(text["data"]);
     }
@@ -193,7 +189,7 @@ export default function Person() {
               <img
                 alt={name}
                 src={"/images/" + person + ".jpg"}
-                style={{ borderRadius: "5%", width: "100%" }}
+                style={{ borderRadius: "5%", width: "80%" }}
               />
               <h2>{name}</h2>
               <p>{three}</p>
@@ -224,22 +220,6 @@ export default function Person() {
           </Grid>
         </Grid>
       </main>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant='h6' align='center' gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant='subtitle1'
-          align='center'
-          color='textSecondary'
-          component='p'
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

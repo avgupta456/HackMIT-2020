@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import Home from "./Home.js";
 import Person from "./Person.js";
 import Directory from "./Directory.js";
-import Random from "./Random.js";
 
 import AppBar from "@material-ui/core/AppBar";
 import { Link } from "react-router-dom";
@@ -44,12 +43,14 @@ class Routing extends React.Component {
             </Tabs>
           </AppBar>
         </MuiThemeProvider>
-
         <Switch>
           <Route path={HomeRoute} exact component={Home} />
           <Route path={PersonRoute} component={Person} />
           <Route path={DirectoryRoute} component={Directory} />
-          <Route path={RandomRoute} component={Random} />
+          <Route
+            path={RandomRoute}
+            render={() => <Person person='elon_musk' />}
+          />
         </Switch>
       </React.Fragment>
     );
